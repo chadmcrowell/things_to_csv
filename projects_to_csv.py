@@ -49,7 +49,6 @@ keys = [
     "notes",
     "items",
     "tags",
-    "start",
     "start_date",
     "deadline",
     "reminder_time",
