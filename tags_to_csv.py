@@ -28,6 +28,7 @@ keys = [
     "start",
     "start_date",
     "deadline",
+    "reminder_time",
     "checklist",
     "stop_date",
     "created",
