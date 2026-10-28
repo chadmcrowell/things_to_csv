@@ -1,10 +1,12 @@
 import things
 import csv
-import sys
 from datetime import datetime
 
-includeCompleted = sys.argv[1] if len(sys.argv) > 1 else False
-includeCanceled = sys.argv[2] if len(sys.argv) > 2 else False
+from common import created_in, parse_args, year_suffix
+
+includeCompleted, includeCanceled, year = parse_args(
+    "Export Things to-dos, tags and areas to CSV."
+)
 
 
 def getTasks(includeCompleted, includeCanceled):
@@ -22,7 +24,7 @@ def getTasks(includeCompleted, includeCanceled):
     return tasks
 
 
-usersTasks = getTasks(includeCompleted, includeCanceled)
+usersTasks = created_in(getTasks(includeCompleted, includeCanceled), year)
 usersTags = things.tags()
 usersAreas = things.areas()
 
@@ -34,7 +36,7 @@ canceled = "_canceled" if includeCanceled else ""
 now = datetime.now()
 
 
-filename = f"things_{now.year}-{now.month}-{now.day}_{now.hour}-{now.minute}_incomplete{completed}{canceled}.csv"
+filename = f"things_{now.year}-{now.month}-{now.day}_{now.hour}-{now.minute}_incomplete{completed}{canceled}{year_suffix(year)}.csv"
 
 
 keys = [

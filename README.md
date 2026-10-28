@@ -23,6 +23,13 @@ The first Boolean parameter represents the inclusion of completed tasks, and the
 
 If you would only like to include incomplete tasks and projects, simply run `python3 things_to_csv.py`
 
+#### Limit to a Year
+
+`things_to_csv.py`, `tasks_to_csv.py` and `projects_to_csv.py` accept an optional `--year` flag that keeps only items created in that year:
+`python3 things_to_csv.py True --year 2026`
+
+The output filename gets a `_created<year>` suffix. Tags and areas have no creation date, so `things_to_csv.py` always includes them.
+
 #### Get Your Tasks
 
 Run `python3 tasks_to_csv` to get all incomplete tasks as a CSV in this directory.
